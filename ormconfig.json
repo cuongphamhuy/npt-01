@@ -7,5 +7,5 @@
   "database": "npt_01",
   "synchronize": true,
   "entities": ["src/db/entities/**/*.entity{.ts,.js}"],
-  "migrations": ["src/db/migrations/*.js"]
+  "migrations": ["src/db/migrations/*{.ts,.js}"]
 }
