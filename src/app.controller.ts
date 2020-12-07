@@ -1,9 +1,11 @@
-import { Controller, Request, Get, UseGuards } from '@nestjs/common';
+import { Controller, Request, Get, UseGuards, UseFilters } from '@nestjs/common';
 import { AuthenticatedGuard } from './common/guards/authenticated.guard';
+import { ForbiddenExceptionFilter } from './common/filters/forbidden-exception.filter';
 import { AppService } from './app.service';
 
 @Controller()
 @UseGuards(AuthenticatedGuard)
+@UseFilters(ForbiddenExceptionFilter)
 export class AppController {
   constructor(
     private readonly appService: AppService,
