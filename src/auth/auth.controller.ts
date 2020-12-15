@@ -11,6 +11,6 @@ export class AuthController {
   @UseGuards(LocalAuthGuard)
   @Post('/login')
   postLogin(@Res() res: Response) {
-    res.redirect('/profile')
+    res.redirect('/dashboard')
   }
 }
