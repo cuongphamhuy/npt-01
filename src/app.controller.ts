@@ -1,4 +1,4 @@
-import { Controller, Request, Get, UseGuards, UseFilters } from '@nestjs/common';
+import { Controller, Request, Get, UseGuards, UseFilters, Redirect } from '@nestjs/common';
 import { AuthenticatedGuard } from './common/guards/authenticated.guard';
 import { ForbiddenExceptionFilter } from './common/filters/forbidden-exception.filter';
 import { AppService } from './app.service';
@@ -11,13 +11,11 @@ export class AppController {
     private readonly appService: AppService,
   ) {}
 
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
+  @Get(['', '/dashboard'])
+  @Redirect('/projects')
 
   @Get('/profile')
   async getProfile(@Request() req) {
-    return req.user
+    return req.user;
   }
 }
